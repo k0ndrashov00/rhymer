@@ -9,11 +9,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final primaryColor = Color(0xFFF82B10);
+    const primaryColor = Color(0xFFF82B10);
     return MaterialApp(
       theme: ThemeData(
         primaryColor: primaryColor,
-        scaffoldBackgroundColor: Color(0xFFEFF1F3),
+        scaffoldBackgroundColor: const Color(0xFFEFF1F3),
         colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),
       ),
       home: const HomeScreen(),
@@ -38,26 +38,26 @@ class HomeScreen extends StatelessWidget {
             backgroundColor: theme.cardColor,
             surfaceTintColor: Colors.transparent,
             title: const Text('Rhymer'),
-            bottom: PreferredSize(
-              preferredSize: const Size.fromHeight(82),
+            bottom: const PreferredSize(
+              preferredSize: Size.fromHeight(82),
               child: SearchButton()
             ),
           ),
-          SliverToBoxAdapter(child: SizedBox(height: 16)),
+          const SliverToBoxAdapter(child: SizedBox(height: 16)),
           SliverToBoxAdapter(child: SizedBox(
             height: 100,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               itemCount: 10,
-              separatorBuilder: (context, index) => SizedBox(width: 16),
+              separatorBuilder: (context, index) => const SizedBox(width: 16),
               itemBuilder: (context, index) { 
                 final rhymes = List.generate(4, (index) => 'Рифма');
                 return RhymeHistoryCard(rhymes: rhymes);
               }
             )
           )),
-          SliverToBoxAdapter(child: SizedBox(height: 16)),
+          const SliverToBoxAdapter(child: SizedBox(height: 16)),
           SliverList.builder(
             itemBuilder: (context, index) => const RhymeListCard()
           )
@@ -105,16 +105,16 @@ class SearchButton extends StatelessWidget {
     final theme = Theme.of(context);
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.all(12),
-      margin: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(12),
+      margin: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         color: theme.hintColor.withOpacity(0.1)
       ),
       child: Row(
         children: [
-          Icon(Icons.search_rounded),
-          SizedBox(width: 12),
+          const Icon(Icons.search_rounded),
+          const SizedBox(width: 12),
           Text(
             'Поиск рифм...',
             style: TextStyle(
@@ -149,7 +149,7 @@ class RhymeHistoryCard extends StatelessWidget {
           Text('Слово', style: theme.textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w700)),
           Wrap(
             children: rhymes.map((e) => Padding(
-              padding: EdgeInsets.only(right: 4),
+              padding: const EdgeInsets.only(right: 4),
               child: Text(e),
             )).toList()
           )
