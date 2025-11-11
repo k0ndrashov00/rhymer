@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:rhymer/features/search/widgets/widgets.dart';
+import 'package:rhymer/ui/ui.dart';
 
 @RoutePage()
 class SearchScreen extends StatelessWidget {
@@ -42,130 +44,6 @@ class SearchScreen extends StatelessWidget {
         const SliverToBoxAdapter(child: SizedBox(height: 16)),
         SliverList.builder(itemBuilder: (context, index) => const RhymeListCard()),
       ],
-    );
-  }
-}
-
-class BaseContainer extends StatelessWidget {
-  const BaseContainer({
-    super.key, 
-    required this.width, 
-    this.padding = const EdgeInsets.only(left: 16), 
-    this.margin, 
-    required this.child
-  });
-
-  final double width;
-  final EdgeInsets padding;
-  final EdgeInsets? margin;
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Container(
-      width: width,
-      padding: padding,
-      margin: margin,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: theme.cardColor
-      ),
-      child: child,
-    );
-  }
-}
-
-class SearchButton extends StatelessWidget {
-  const SearchButton({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(12),
-      margin: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16), 
-        color: theme.hintColor.withOpacity(0.1)
-      ),
-      child: Row(
-        children: [
-          const Icon(Icons.search_rounded),
-          const SizedBox(width: 12),
-          Text(
-            'Поиск рифм...',
-            style: TextStyle(
-              fontSize: 18, 
-              fontWeight: FontWeight.w500, 
-              color: theme.hintColor.withOpacity(0.5)
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class RhymeHistoryCard extends StatelessWidget {
-  const RhymeHistoryCard({
-    super.key, 
-    required this.rhymes
-  });
-
-  final List<String> rhymes;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return BaseContainer(
-      width: 200,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Слово', 
-            style: theme.textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w700)
-          ),
-          Wrap(
-            children: rhymes.map((e) => Padding(
-              padding: const EdgeInsets.only(right: 4), 
-              child: Text(e))
-            ).toList(),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class RhymeListCard extends StatelessWidget {
-  const RhymeListCard({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return BaseContainer(
-      width: double.infinity,
-      margin: const EdgeInsets.symmetric(horizontal: 16).copyWith(bottom: 16),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            'Рифма', 
-            style: theme.textTheme.bodyLarge
-          ),
-          IconButton(
-            icon: Icon(
-              Icons.favorite, 
-              color: theme.hintColor.withOpacity(0.2)
-            ),
-            onPressed: () {},
-          ),
-        ],
-      ),
     );
   }
 }

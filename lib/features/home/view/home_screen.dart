@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
       routes: const [
         SearchRoute(),
         FavoritesRoute(),
-        PoemsRoute(),
+        HistoryRoute(),
         SettingsRoute(),
       ],
       builder: (context, child) {
@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
             items: const [
               BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Поиск'),
               BottomNavigationBarItem(icon: Icon(Icons.favorite),label: 'Избранное'),
-              BottomNavigationBarItem(icon: Icon(Icons.menu), label: 'Стихи'),
+              BottomNavigationBarItem(icon: Icon(Icons.history), label: 'История'),
               BottomNavigationBarItem(icon: Icon(Icons.settings),label: 'Настройки'),
             ],
           ),
