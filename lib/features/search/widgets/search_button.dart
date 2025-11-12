@@ -11,7 +11,8 @@ class SearchButton extends StatelessWidget {
       padding: const EdgeInsets.all(12),
       margin: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16), 
+        borderRadius: BorderRadius.circular(16),
+        // ignore: deprecated_member_use 
         color: theme.hintColor.withOpacity(0.1)
       ),
       child: Row(
@@ -22,7 +23,8 @@ class SearchButton extends StatelessWidget {
             'Поиск рифм...',
             style: TextStyle(
               fontSize: 18, 
-              fontWeight: FontWeight.w500, 
+              fontWeight: FontWeight.w500,
+              // ignore: deprecated_member_use 
               color: theme.hintColor.withOpacity(0.5)
             ),
           ),

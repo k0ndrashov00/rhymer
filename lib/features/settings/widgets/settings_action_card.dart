@@ -37,6 +37,7 @@ class SettingsActionCard extends StatelessWidget {
                 child: Icon(
                   iconData,
                   size: 32,
+                  // ignore: deprecated_member_use
                   color: iconColor ?? theme.hintColor.withOpacity(0.3),
                 ),
               )
