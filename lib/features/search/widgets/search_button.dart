@@ -1,34 +1,42 @@
 import 'package:flutter/material.dart';
 
 class SearchButton extends StatelessWidget {
-  const SearchButton({super.key});
+  const SearchButton({
+    super.key, 
+    required this.onTap
+  });
+
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(12),
-      margin: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        // ignore: deprecated_member_use 
-        color: theme.hintColor.withOpacity(0.1)
-      ),
-      child: Row(
-        children: [
-          const Icon(Icons.search_rounded),
-          const SizedBox(width: 12),
-          Text(
-            'Поиск рифм...',
-            style: TextStyle(
-              fontSize: 18, 
-              fontWeight: FontWeight.w500,
-              // ignore: deprecated_member_use 
-              color: theme.hintColor.withOpacity(0.5)
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.all(12),
+        margin: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          // ignore: deprecated_member_use 
+          color: theme.hintColor.withOpacity(0.1)
+        ),
+        child: Row(
+          children: [
+            const Icon(Icons.search_rounded),
+            const SizedBox(width: 12),
+            Text(
+              'Поиск рифм...',
+              style: TextStyle(
+                fontSize: 18, 
+                fontWeight: FontWeight.w500,
+                // ignore: deprecated_member_use 
+                color: theme.hintColor.withOpacity(0.5)
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

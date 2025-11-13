@@ -20,9 +20,11 @@ class SearchScreen extends StatelessWidget {
           backgroundColor: theme.cardColor,
           surfaceTintColor: Colors.transparent,
           title: const Text('Rhymer'),
-          bottom: const PreferredSize(
-            preferredSize: Size.fromHeight(82),
-            child: SearchButton()
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(82),
+            child: SearchButton(
+              onTap: () => _showSearchBottomSheet(context)
+            )
           ),
         ),
         const SliverToBoxAdapter(child: SizedBox(height: 16)),
@@ -44,6 +46,18 @@ class SearchScreen extends StatelessWidget {
         const SliverToBoxAdapter(child: SizedBox(height: 16)),
         SliverList.builder(itemBuilder: (context, index) => const RhymeListCard(rhyme: 'Рифма')),
       ],
+    );
+  }
+
+  Future<dynamic> _showSearchBottomSheet(BuildContext context) {
+    return showModalBottomSheet(
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      context: context, 
+      builder: (context) => const Padding(
+        padding: EdgeInsets.only(top: 100),
+        child: SearchRhymesBottomSheet(),
+      ),
     );
   }
 }
